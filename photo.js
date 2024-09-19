@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      2.1
 // @description  自动在浏览器中播放媒体链接，右下角显示浮动画廊，支持全屏，图像居中显示
-// @author       panjiale
+// @author       jiale.pan
 // @match        http://jira-ex.transsion.com/browse/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
