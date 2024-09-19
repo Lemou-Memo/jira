@@ -2,7 +2,7 @@
 (function() {
     'use strict';
 
-    // ==关键词高亮和当前用户加粗部分==
+    // ==关键词高亮和当前用户加粗部分==test
     let keywords = JSON.parse(localStorage.getItem('highlightedKeywords')) || ["标准化", "三方", "粉丝"];
     const effectStyle = `
         .highlighted-keyword {
