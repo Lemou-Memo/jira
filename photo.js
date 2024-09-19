@@ -1,3 +1,15 @@
+// ==UserScript==
+// @name         获取所有图片和视频显示右下角翻页
+// @namespace    http://tampermonkey.net/
+// @version      2.1
+// @description  自动在浏览器中播放媒体链接，右下角显示浮动画廊，支持全屏，图像居中显示
+// @author       panjiale
+// @match        http://jira-ex.transsion.com/browse/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// @updateURL    https://github.com/Lemou-Memo/jira/raw/main/photo.js
+// @downloadURL  https://github.com/Lemou-Memo/jira/raw/main/photo.js
+// ==/UserScript==
 (function() {
     'use strict';
 
