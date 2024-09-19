@@ -1,4 +1,14 @@
-
+// ==UserScript==
+// @name         Jira功能拓展优化整合版
+// @namespace    http://tampermonkey.net/
+// @version      2.1
+// @description  关键词高亮、当前用户加粗、复制按钮、bug提示按钮、时间显示优化等功能的整合
+// @author       jiale.pan
+// @match        http://jira-ex.transsion.com/*
+// @grant        none
+// @updateURL    https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
+// @downloadURL  https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
+// ==/UserScript==
 (function() {
     'use strict';
 
