@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    // 创建浮动画廊容器
+    // 创建浮动画廊容器ceshi
     const galleryContainer = document.createElement('div');
     galleryContainer.style.position = 'fixed';
     galleryContainer.style.bottom = '20px';
