@@ -6,8 +6,8 @@
 // @author       jiale.pan
 // @match        http://jira-ex.transsion.com/*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
-// @downloadURL  https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
+// @updateURL    https://github.com/Lemou-Memo/jira/raw/refs/heads/main/jira_firefox
+// @downloadURL  https://github.com/Lemou-Memo/jira/raw/refs/heads/main/jira_firefox
 // ==/UserScript==
 
 (function() {
