@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira功能拓展优化整合版
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.2
 // @description  关键词高亮、当前用户加粗、复制按钮、bug提示按钮、时间显示优化等功能的整合
 // @author       jiale.pan
 // @match        http://jira-ex.transsion.com/*
