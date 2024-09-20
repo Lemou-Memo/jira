@@ -9,10 +9,22 @@
 // @updateURL    https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
 // @downloadURL  https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
 // ==/UserScript==
+// ==UserScript==
+// @name         Jira功能拓展优化整合版
+// @namespace    http://tampermonkey.net/
+// @version      2.2
+// @description  当前用户加粗、复制按钮、bug提示按钮、时间显示优化等功能的整合
+// @author       jiale.pan
+// @match        http://jira-ex.transsion.com/*
+// @grant        none
+// @updateURL    https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
+// @downloadURL  https://raw.githubusercontent.com/Lemou-Memo/jira/main/Jira%20Functionality%20Enhancement%20and%20Integration.js
+// ==/UserScript==
+
 (function() {
     'use strict';
 
-    // ==关键词高亮和当前用户加粗部分==test
+    // ==关键词高亮和当前用户加粗部分==
     let keywords = JSON.parse(localStorage.getItem('highlightedKeywords')) || ["标准化", "三方", "粉丝"];
     const effectStyle = `
         .highlighted-keyword {
@@ -139,88 +151,87 @@
             });
         }
     }
+    highlightCurrentUser();
+    // function updateHighlights() {
+    //     clearHighlights();
+    //     highlightText(document.body);
+    // }
+    // updateHighlights();
 
-    function updateHighlights() {
-        clearHighlights();
-        highlightText(document.body);
-        highlightCurrentUser();
-    }
-    updateHighlights();
+    // const floatingPanel = document.createElement("div");
+    // floatingPanel.className = "floating-panel";
+    // floatingPanel.innerHTML = `
+    //     <input type="text" id="newKeyword" placeholder="添加关键词" />
+    //     <button id="addKeyword">+</button>
+    //     <div id="keywordList"></div>
+    // `;
+    // document.body.appendChild(floatingPanel);
 
-    const floatingPanel = document.createElement("div");
-    floatingPanel.className = "floating-panel";
-    floatingPanel.innerHTML = `
-        <input type="text" id="newKeyword" placeholder="添加关键词" />
-        <button id="addKeyword">+</button>
-        <div id="keywordList"></div>
-    `;
-    document.body.appendChild(floatingPanel);
+    // const toggleButton = document.createElement("button");
+    // toggleButton.className = "toggle-button";
+    // toggleButton.textContent = "☰";
+    // document.body.appendChild(toggleButton);
 
-    const toggleButton = document.createElement("button");
-    toggleButton.className = "toggle-button";
-    toggleButton.textContent = "☰";
-    document.body.appendChild(toggleButton);
+    // toggleButton.addEventListener("click", function() {
+    //     floatingPanel.style.display = floatingPanel.style.display === "none" || !floatingPanel.style.display ? "block" : "none";
+    //     renderKeywordList();
+    // });
 
-    toggleButton.addEventListener("click", function() {
-        floatingPanel.style.display = floatingPanel.style.display === "none" || !floatingPanel.style.display ? "block" : "none";
-        renderKeywordList();
-    });
+    // function renderKeywordList() {
+    //     const keywordListDiv = document.getElementById("keywordList");
+    //     keywordListDiv.innerHTML = "";
 
-    function renderKeywordList() {
-        const keywordListDiv = document.getElementById("keywordList");
-        keywordListDiv.innerHTML = "";
+    //     keywords.forEach((keyword, index) => {
+    //         const keywordItem = document.createElement("div");
+    //         keywordItem.className = "keyword-item";
+    //         keywordItem.innerHTML = `
+    //             <span>${keyword}</span>
+    //             <button class="delete-btn" data-index="${index}">删除</button>
+    //         `;
+    //         keywordListDiv.appendChild(keywordItem);
+    //     });
 
-        keywords.forEach((keyword, index) => {
-            const keywordItem = document.createElement("div");
-            keywordItem.className = "keyword-item";
-            keywordItem.innerHTML = `
-                <span>${keyword}</span>
-                <button class="delete-btn" data-index="${index}">删除</button>
-            `;
-            keywordListDiv.appendChild(keywordItem);
-        });
+    //     document.querySelectorAll(".delete-btn").forEach(button => {
+    //         button.addEventListener("click", function() {
+    //             const index = this.getAttribute("data-index");
+    //             keywords.splice(index, 1);
+    //             saveKeywords();
+    //             updateHighlights();
+    //             renderKeywordList();
+    //         });
+    //     });
+    // }
 
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                const index = this.getAttribute("data-index");
-                keywords.splice(index, 1);
-                saveKeywords();
-                updateHighlights();
-                renderKeywordList();
-            });
-        });
-    }
+    // function saveKeywords() {
+    //     localStorage.setItem('highlightedKeywords', JSON.stringify(keywords));
+    // }
 
-    function saveKeywords() {
-        localStorage.setItem('highlightedKeywords', JSON.stringify(keywords));
-    }
+    // function checkKeywordContainment(newKeyword) {
+    //     for (let keyword of keywords) {
+    //         if (keyword.includes(newKeyword) || newKeyword.includes(keyword)) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
-    function checkKeywordContainment(newKeyword) {
-        for (let keyword of keywords) {
-            if (keyword.includes(newKeyword) || newKeyword.includes(keyword)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    document.getElementById("addKeyword").addEventListener("click", function() {
-        const newKeyword = document.getElementById("newKeyword").value.trim();
-        if (newKeyword && !keywords.includes(newKeyword)) {
-            if (!checkKeywordContainment(newKeyword)) {
-                keywords.push(newKeyword);
-                saveKeywords();
-                document.getElementById("newKeyword").value = "";
-                updateHighlights();
-                renderKeywordList();
-            } else {
-                alert("关键词与现有关键词存在包含关系，无法添加！");
-            }
-        } else if (keywords.includes(newKeyword)) {
-            alert("关键词已存在！");
-        }
-    });
-    renderKeywordList();
+    // document.getElementById("addKeyword").addEventListener("click", function() {
+    //     const newKeyword = document.getElementById("newKeyword").value.trim();
+    //     if (newKeyword && !keywords.includes(newKeyword)) {
+    //         if (!checkKeywordContainment(newKeyword)) {
+    //             keywords.push(newKeyword);
+    //             saveKeywords();
+    //             document.getElementById("newKeyword").value = "";
+    //             updateHighlights();
+    //             renderKeywordList();
+    //         } else {
+    //             alert("关键词与现有关键词存在包含关系，无法添加！");
+    //         }
+    //     } else if (keywords.includes(newKeyword)) {
+    //         alert("关键词已存在！");
+    //     }
+    // });
+    // renderKeywordList();
 
     // ==Jira功能拓展部分==
     function createCopyButton(anchor, row) {
@@ -455,18 +466,6 @@
     function saveRowData(data) {
         localStorage.setItem('rowData', JSON.stringify(data));
     }
-
-    // 定义计数器变量
-    let count = 0;
-
-    // 定义计数逻辑
-    function incrementCount() {
-        count++; // 计数器加1
-        if (count === 3) { // 如果计数达到3，触发更新
-            updateHighlights();
-            count = 0; // 重置计数器
-        }
-    }
         // 初始化函数
     function initializeLinks() {
         document.querySelectorAll('td.summary a.issue-link').forEach(link => {
@@ -491,7 +490,8 @@
         initializeButtons();
         updateColumnHeaders();
         initializeLinks();
-        incrementCount();
+        //incrementCount();
+        highlightCurrentUser();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
@@ -500,6 +500,7 @@
 
     // 监听关键词变化并更新高亮显示
     window.addEventListener('callScriptB', (event) => {
-        updateHighlights();
+        highlightCurrentUser();
     });
 })();
+
